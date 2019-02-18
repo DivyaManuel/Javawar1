@@ -1,6 +1,6 @@
 pipeline
  {
-    agent sla
+  agent { label ' sla ' }
 
     stages 
 {
