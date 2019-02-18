@@ -1,40 +1,29 @@
 pipeline
  {
-  agent { label ' sla ' }
+  agent { label 'sla' 
 
-    stages 
-{
+ stages 
+ {
       
         stage ('Compile Stage') 
-{
-
-            steps
- {
-               
-                    sh 'mvn -f pom.xml clean install'
+       {
+              steps
+              {
+               sh 'mvn -f pom.xml clean install'
                 
-            }
+               }
         }
 
         stage ('Testing Stage')
- {
+       {
 
-            steps
- {
-                
-                    sh 'mvn -f pom.xml test'
+               steps
+                {  
+                 sh 'mvn -f pom.xml test'
                 }
             
         }
-        stage('Deploy to Tomcat')
-{
-        steps
- {
-        sh 'cp -r /root/.jenkins/workspace/Slave1/target/* /opt/apache-tomcat-8.5.3/webapps/'
-        }
-        }
-
-
-        
+               
     }
 }
+ }
